@@ -7,8 +7,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import java.awt.Color;
 
 public class Pizza {
 	JFrame f;
@@ -20,29 +22,26 @@ public class Pizza {
     int potato = 0;
     int bulgogi = 0;
     JTextArea list;
+    private JLabel 총계l;
+    private JButton btnNewButton;
     
 public Pizza() { //p하고 ctrl+space
 	//1. 부품복사 시작
 	f = new JFrame();
 	top = new JLabel("자바피자에 오신 것을 환영합니다.");
 	count = new JLabel("개수");
-	b1 = new JButton("콤보피자");
 	b2 = new JButton("포테이토피자");
 	b3 = new JButton("불고기피자");
 	total = new JTextField(20);
 	
 	//1. 부품복사 완료
 	FlowLayout flow = new FlowLayout();
-    f.setLayout(flow);
+    f.getContentPane().setLayout(flow);
     list = new JTextArea(3,30); //(3,30) 3줄 30행
 
-    f.add(top);
-	f.add(b1);
-	f.add(b2);
-	f.add(b3);
-	f.add(count);
-	f.add(total);
-	f.add(list);
+    f.getContentPane().add(top);
+	b1 = new JButton("콤보피자");
+	f.getContentPane().add(b1);
 	
 	b1.addActionListener(new ActionListener() {
 		
@@ -58,6 +57,23 @@ public Pizza() { //p하고 ctrl+space
 			
 		}
 	});
+	f.getContentPane().add(b2);
+	f.getContentPane().add(b3);
+	f.getContentPane().add(count);
+	f.getContentPane().add(total);
+	f.getContentPane().add(list);
+	
+	총계l = new JLabel("총계");
+	f.getContentPane().add(총계l);
+	
+	btnNewButton = new JButton("나를 눌러요");
+	btnNewButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			JOptionPane.showMessageDialog(null, "나를 정말 누르셨군요");
+		}
+	});
+	btnNewButton.setForeground(Color.RED);
+	f.getContentPane().add(btnNewButton);
 	
 	b2.addActionListener(new ActionListener() {
 		
